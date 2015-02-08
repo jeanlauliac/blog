@@ -1,3 +1,0 @@
-#!/bin/sh
-
-node_modules/.bin/6to5-node lib/build.js
