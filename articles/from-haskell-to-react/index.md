@@ -18,5 +18,5 @@ What is beautiful with [React](https://facebook.github.io/react/) is precisely
 that it makes components reasonable. Because they are autonomous self-entities
 that do not depend on global state, you are in full control of their behavior.
 
-Use [immutable-js](#). Use . That’s how we make robust interfaces
+WIP. Also, use [immutable-js](#). That’s how we make robust interfaces
 nowadays.
