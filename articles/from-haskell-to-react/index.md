@@ -10,7 +10,7 @@ elimination](https://en.wikipedia.org/wiki/Tail_call), [function
 purity](https://en.wikipedia.org/wiki/Pure_function) and
 [immutability](https://en.wikipedia.org/wiki/Immutable_object). Think about the
 benefits and drawbacks of the functional approach. Is it robust? Is it
-performant? Are you functions *reasonable* -- easy to reason about? How does it
+performant? Are your functions *reasonable* -- easy to reason about? How does it
 compare to the object-oriented programming?
 
 When you come back to Javascript, you’ll find yourself missing the
