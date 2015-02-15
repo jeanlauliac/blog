@@ -111,8 +111,7 @@ are stored forever. For most cases, a smarter cache algorithm will be used, such
 as an [LRU cache](https://en.wikipedia.org/wiki/Cache_algorithms).
 
 In our specific case, it is very unlikely for the immutable `Iterable` to be
-reverted to an older value. Thanks to this knowledge, we can simply store the
-latest result:
+reverted to an older value. We can simply store the latest result:
 
     function memoizedSortPost() {
       var lastPosts = null;
@@ -129,7 +128,7 @@ latest result:
       }
     }
 
-Again, this works only thanks to immutability. A whole new list object will be
+Again, this works thanks to immutability. A whole new list object will be
 passed every time a live-reload is done. Then, in the component:
 
     PostList = React.createClass({
