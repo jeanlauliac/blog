@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "6to5-node lib/build.js",
-    "publish": "npm run build && (cd output && git commit --all -m 'Publish' && git push)",
+    "publish": "npm run build && (cd output && git add -A && git commit -m 'Publish' && git push)",
     "serve": "npm run build && serve output"
   },
   "homepage": "https://github.com/jeanlauliac/blog",
