@@ -44,9 +44,8 @@ either enforce the property to be constant, or take changes into account.
 
 In our example case, enforcing the posts to be constant would have avoided the
 issue. In React, this can be done in
-[`componentWillReceiveProps`](https://facebook.github.io/react/docs/component-
-specs.html#updating-componentwillreceiveprops), lifecycle function called only
-on updates, not on mount. Let's have first try:
+[`componentWillReceiveProps`](https://facebook.github.io/react/docs/component-specs.html#updating-componentwillreceiveprops),
+lifecycle function called only on updates, not on mount. Let's have first try:
 
     PostList = React.createClass({
       componentWillMount() {

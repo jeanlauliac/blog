@@ -33,6 +33,7 @@
     "ncp": "^1.0.1",
     "pygmentize-bundled": "^2.3.0",
     "react": "^0.12.2",
-    "serve": "^1.4.0"
+    "serve": "^1.4.0",
+    "xml-escape": "^1.0.0"
   }
 }
