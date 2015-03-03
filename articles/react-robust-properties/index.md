@@ -15,7 +15,7 @@ We know `posts` will not change because the array is loaded at the start of the
 application. So, we decide to sort once and for all in `componentWillMount`,
 hoping it will make subsequent renderings more performant.
 
-    PostList = React.createClass({
+    var PostList = React.createClass({
       componentWillMount() {
         this._sortedPosts = this.props.posts.sort(comparePost)
       },
@@ -47,7 +47,7 @@ issue. In React, this can be done in
 [`componentWillReceiveProps`](https://facebook.github.io/react/docs/component-specs.html#updating-componentwillreceiveprops),
 lifecycle function called only on updates, not on mount. Let's have first try:
 
-    PostList = React.createClass({
+    var PostList = React.createClass({
       componentWillMount() {
         this._sortedPosts = this.props.posts.sort(comparePost)
       },
@@ -67,7 +67,7 @@ immutable data constructs, such as provided by
 [immutable-js](https://facebook.github.io/immutable-js/). We'll accept
 any `Iterable` instead of an array:
 
-    PostList = React.createClass({
+    var PostList = React.createClass({
       propTypes: { posts: React.PropTypes.instanceOf(Immutable.Iterable) },
       // [...]
     })
@@ -86,7 +86,7 @@ sorting local to the component.
 
 We could simply move everything in `render()`:
 
-    PostList = React.createClass({
+    var PostList = React.createClass({
       render() {
         var sortedPosts = this.props.posts.sort(this._comparePost)
         var filteredPosts = sortedPosts.filter(this._searchFilter)
@@ -130,7 +130,7 @@ reverted to an older value. We can simply store the latest result:
 Again, this works thanks to immutability. A whole new list object will be
 passed every time a live-reload is done. Then, in the component:
 
-    PostList = React.createClass({
+    var PostList = React.createClass({
       propTypes: { posts: React.PropTypes.instanceOf(Immutable.Iterable) },
       componentWillMount() {
         this._sortPosts = memoizedSortPost()
