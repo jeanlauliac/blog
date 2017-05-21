@@ -2,8 +2,9 @@
 
 'use strict';
 
-const ArticlePage = require('../lib/ArticlePage');
+const ArticlePage = require('./lib/ArticlePage');
 const Articles = require('./lib/Articles');
+const NodeDeps = require('./lib/NodeDeps');
 const React = require('React');
 const fs = require('fs');
 const marked = require('marked');
@@ -62,6 +63,6 @@ function writeDepFile(depfilePath, outputPath, depPaths) {
   buildHTML(dirPath, contentPath, manifest, (error, html) => {
     if (error) throw error;
     fs.writeFileSync(outputPath, html);
-    writeDepFile(depfilePath, outputPath, [contentPath]);
+    writeDepFile(depfilePath, outputPath, NodeDeps.get().concat([contentPath]));
   });
 })();

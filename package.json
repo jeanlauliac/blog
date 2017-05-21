@@ -13,7 +13,7 @@
     "url": "https://github.com/jeanlauliac/blog/issues"
   },
   "scripts": {
-    "build": "6to5-node lib/build.js",
+    "build": "./upd --all",
     "publish": "npm run build && (cd output && git add -A && git commit -m 'Publish' && git push)",
     "serve": "npm run build && serve output"
   },
