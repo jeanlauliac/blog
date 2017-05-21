@@ -33,9 +33,10 @@ var ArticlePage = React.createClass({
         <div>
           <hr />
           <p className='comments'>
-            Comments, corrections? Ping me{' '}
-            <a href='https://twitter.com/jeanlauliac'>on Twitter</a>, or{' '}
-            <a href={githubURL}>send a pull request</a>.
+            Find me{' '}
+            <a href='https://twitter.com/jeanlauliac'>on Twitter</a>,
+            edit{' '}
+            <a href={githubURL}>that article</a>.
           </p>
         </div>
       </article>
