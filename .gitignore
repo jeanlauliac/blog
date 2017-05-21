@@ -4,3 +4,6 @@
 /npm-debug.log
 /output/
 .DS_Store
+/.upd
+/dist
+/updfile.json
