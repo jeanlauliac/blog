@@ -30,7 +30,7 @@ function readManifestSync(manifestPath) {
     title: manifest[ManifestField.TITLE],
     updated:
       manifest[ManifestField.UPDATED] ?
-        moment(manifest[ManifestField.UPDATED]).valueOf() :
+        moment(manifest[ManifestField.UPDATED]) :
         null,
     uuid: manifest[ManifestField.UUID],
   };

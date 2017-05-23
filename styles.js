@@ -24,15 +24,15 @@ var CODE_COLORS = {
 }
 
 function makeHeaders() {
-  var obj = {}
+  var obj = {};
   Array.apply(null, Array(5)).forEach((_, i) => {
     obj['h' + (i + 1)] = {
       fontSize: SCALE[i],
       fontWeight: 400,
       margin: '2rem 0 1rem 0',
-    }
-  })
-  return obj
+    };
+  });
+  return {article: obj};
 }
 
 function makeCodeHighlights() {
@@ -122,8 +122,9 @@ function styles(cb) {
       listStyle: 'none',
       padding: 0,
       h1: {
-        fontSize: SCALE[2],
-        margin: '2rem 0 0 0',
+        fontSize: SCALE[3],
+        margin: '1rem 0 0 0',
+        fontWeight: 400,
         a: {
           color: 'inherit',
           ':hover': {

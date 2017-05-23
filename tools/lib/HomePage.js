@@ -14,11 +14,13 @@ var HomePage = React.createClass({
         {this._renderArticles()}
         <Author />
       </Page>
-    )
+    );
   },
 
   _renderArticles() {
-    var articles = this.props.articles.sort((a, b) => b.updated - a.updated)
+    var articles = this.props.articles.sort((a, b) => {
+      return b.updated.diff(a.updated);
+    });
     return (
       <ul className='articles'>
         {articles.map((article) => {
@@ -32,7 +34,7 @@ var HomePage = React.createClass({
           </li>
         })}
       </ul>
-    )
+    );
   },
 })
 
