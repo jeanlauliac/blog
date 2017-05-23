@@ -5,10 +5,10 @@ var Author = React.createClass({
     return (
       <div>
         <hr />
-        <p className='light'>
-          <a href='/' rel='author'>Jean Lauliac</a>
-          <a className='icon-twitter' href='https://twitter.com/jeanlauliac' />
-          <a className='icon-github' href='https://github.com/jeanlauliac' />
+        <p className='comments'>
+          I'm Jean. Find me{' '}
+          <a href='https://twitter.com/jeanlauliac'>on Twitter</a>{' '}
+          or <a href='https://github.com/jeanlauliac'>GitHub</a>.
         </p>
       </div>
     )

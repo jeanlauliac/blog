@@ -1,4 +1,3 @@
-var Author = require('./Author')
 var Page = require('./Page')
 var React = require('react')
 var renderTime = require('./renderTime')
