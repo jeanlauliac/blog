@@ -64,7 +64,7 @@ function styles(cb) {
     main: {
       maxWidth: '58rem',
       margin: '4rem auto',
-      padding: '0 2rem'
+      padding: '0 1rem'
     },
     section: {
       maxWidth: '40rem',
@@ -116,12 +116,22 @@ function styles(cb) {
       },
     },
     '::selection': {
-      backgroundColor: 'rgb(240, 235, 225)',
+      backgroundColor: 'rgb(230, 225, 215)',
     },
     'ul.articles': {
       listStyle: 'none',
       padding: 0,
+      ul: {
+        listStyle: 'none',
+        padding: 0,
+        li: {margin: '0 0 0 1rem'},
+      },
       h1: {
+        fontSize: SCALE[4],
+        margin: '2rem 0 0 0',
+        fontWeight: 900,
+      },
+      h2: {
         fontSize: SCALE[3],
         margin: '1rem 0 0 0',
         fontWeight: 400,
