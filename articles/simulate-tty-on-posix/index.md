@@ -43,7 +43,7 @@ example, whether or not it supports colored text.
 This is not always desirable: sometimes you just want to forward content as it
 is, including its formatting, without processing.
 
-## Content Forwarding
+## Forwarding Content
 
 In the
 [`upd`](http://github.com/jeanlauliac/upd) project, I've been wanting to
@@ -65,5 +65,52 @@ like `clang` automatically output formatted content.
 ## Simulating a TTY
 
 POSIX systems provide us with a group of function dedicated to create virtual
-terminals.
+terminals: [`posix_openpt`](http://pubs.opengroup.org/onlinepubs/009695399/functions/posix_openpt.html),
+[`grantpt`](http://pubs.opengroup.org/onlinepubs/9699919799/functions/grantpt.html),
+[`unlockpt`](http://pubs.opengroup.org/onlinepubs/009695399/functions/unlockpt.html),
+and [`ptsname`](http://pubs.opengroup.org/onlinepubs/009695399/functions/ptsname.html). For pretty
+much all uses cases, we'll call them in that order. The OpenGroup documentation
+for `posix_openpt` provide a good example on how to create the 'master' and
+'slave' sides of the terminal, that I won't duplicate here. These are
+represented by file descriptors, that we then manipulate using the usual `write`,
+`read`, `close`, etc. functions.
 
+In our particular use case, let's say we want to simulate a terminal just for
+receiving the `stderr` of some sub-process. In the case of `clang`, this will
+effectively enable formatting for errors and warnings. Assuming we've got
+`masterfd` and `slavefd` successfully, what remains is creating the subprocess
+and overriding their `stderr` with the slave side of the terminal. What we
+can use for that is [`posix_spawn`](http://pubs.opengroup.org/onlinepubs/009695399/functions/posix_spawn.html):
+
+```cpp
+posix_spawn_file_actions_t actions;
+if (
+  posix_spawn_file_actions_init(&actions) != 0 ||
+  posix_spawn_file_actions_addclose(&actions, masterfd) != 0 ||
+  posix_spawn_file_actions_adddup2(&actions, slavefd, STDERR_FILENO) != 0 ||
+  posix_spawn_file_actions_addclose(&actions, slavefd) != 0
+) {
+  throw std::runtime_error("failed to create actions");
+}
+
+pid_t pid;
+if (posix_spawn(&pid, "/usr/bin/clang", &actions, nullptr, argv, environ) != 0) {
+  throw std::runtime_error("failed to spawn process");
+}
+```
+
+So what's happening there? The `action` type is an opaque data structure that
+tells `posix_spawn` what to do with the file descriptors inherited from the
+parent process (we could also use `fork` and `exec`, and the sequence would
+be the same). First we close the master side of the terminal, because we only
+want to read and control it from the parent process.
+
+Then we "dup2" the slave side onto `stderr`: that means after this action,
+`STDERR_FILENO` (that is always 2) now refers to the same underlying device as
+`slavefd`, that is, our virtual terminal. Finally we close `slavefd` as we won't
+need it: this destroy the file descriptor itself, but the slave side of the
+terminal is kept alive by being referenced as `STDERR_FILENO`.
+
+## Reading the TTY Output
+
+Once we've got the virtual terminal and spawn in place, we'll want to read

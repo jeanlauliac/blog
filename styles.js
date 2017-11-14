@@ -92,6 +92,12 @@ function styles(cb) {
     'pre, code': {
       fontFamily: 'monospace',
     },
+    'p code': {
+      background: 'rgb(251, 245, 240)',
+      padding: '.15rem',
+      border: '1px solid rgb(237, 232, 227)',
+      borderRadius: '.2rem',
+    },
     'p.light': {
       color: LIGHT_GRAY,
       fontStyle: 'italic',
