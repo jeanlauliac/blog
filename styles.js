@@ -2,7 +2,7 @@ var Absurd = require('Absurd')
 var modularScale = require('modular-scale')
 
 var ANCHOR_COLOR = 'rgb(159, 35, 53)'
-var ANCHOR_VISITED_COLOR = 'rgb(159, 125, 129)'
+var ANCHOR_VISITED_COLOR = 'rgb(159, 87, 96)'
 var SCALE = modularScale(1.145, 8).map(e => e + 'rem')
 var LIGHTEST_GRAY = 'rgb(240,237,235)'
 var LIGHTER_GRAY = 'rgb(222,215,211)'
@@ -140,9 +140,6 @@ function styles(cb) {
           color: 'inherit',
           ':hover': {
             color: ANCHOR_COLOR,
-            ':visited': {
-              color: ANCHOR_VISITED_COLOR,
-            },
           },
         }
       }

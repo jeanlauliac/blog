@@ -36,6 +36,7 @@ var ArticlePage = React.createClass({
             <a href='https://twitter.com/jeanlauliac'>on Twitter</a>,
             edit{' '}
             <a href={githubURL}>that article</a>.
+            Back <a href="#top">to the top</a>.
           </p>
         </div>
       </article>
