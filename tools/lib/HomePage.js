@@ -21,7 +21,7 @@ var HomePage = React.createClass({
   _renderArticles() {
     return (
       <ul className='articles'>
-        {this._renderYears(this.props.articles)}
+        {this._renderYears(this.props.articles.filter(a => a.published))}
       </ul>
     );
   },
