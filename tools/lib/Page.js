@@ -23,10 +23,6 @@ var Page = React.createClass({
           <meta charSet='utf-8' />
           <meta name='viewport' content='width=device-width' />
           <title>{this.props.title}</title>
-          <link
-            href='http://fonts.googleapis.com/css?family=PT+Sans%7CPT+Serif:400,400italic%7CInconsolata'
-            rel='stylesheet'
-            type='text/css' />
           <link href='/index.css' rel='stylesheet' type='text/css' />
           <link href='/fonts/fontello.css' rel='stylesheet' type='text/css' />
           <link href='/feed.xml' rel='alternate' type='application/atom+xml' />

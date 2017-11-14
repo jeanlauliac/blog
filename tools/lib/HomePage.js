@@ -12,8 +12,8 @@ var HomePage = React.createClass({
   render() {
     return (
       <Page title='Jean Lauliac'>
-        {this._renderArticles()}
         <Author />
+        {this._renderArticles()}
       </Page>
     );
   },

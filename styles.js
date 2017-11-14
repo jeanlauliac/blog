@@ -1,12 +1,12 @@
 var Absurd = require('Absurd')
 var modularScale = require('modular-scale')
 
-var ANCHOR_COLOR = 'rgb(96,159,155)'
-var ANCHOR_VISITED_COLOR = 'rgb(87,136,132)'
+var ANCHOR_COLOR = 'rgb(159, 35, 53)'
+var ANCHOR_VISITED_COLOR = 'rgb(159, 125, 129)'
 var SCALE = modularScale(1.145, 8).map(e => e + 'rem')
 var LIGHTEST_GRAY = 'rgb(240,237,235)'
 var LIGHTER_GRAY = 'rgb(222,215,211)'
-var LIGHT_GRAY = 'rgb(202,195,191)'
+var LIGHT_GRAY = 'rgb(139, 134, 131)'
 var LESS_LIGHT_GRAY = 'rgb(172,165,161)'
 
 var KEYWORD_COLOR = 'rgb(166, 103, 57)';
@@ -54,16 +54,18 @@ function styles(cb) {
       boxSizing: 'inherit',
     },
     body: {
-      backgroundColor: 'rgb(251, 250, 245)',
-      color: '#363533',
-      fontFamily: "'PT Serif', serif",
+      backgroundColor: 'rgb(255, 254, 251)',
+      color: '#363534',
+      fontFamily: "Georgia, Palatino, serif",
       fontSize: '100%',
       fontWeight: 400,
       lineHeight: 1.6,
+      margin: 0,
+      padding: 0,
     },
     main: {
       maxWidth: '58rem',
-      margin: '4rem auto',
+      margin: '1rem auto 2rem auto',
       padding: '0 1rem'
     },
     section: {
@@ -88,7 +90,7 @@ function styles(cb) {
       lineHeight: 1.4,
     },
     'pre, code': {
-      fontFamily: 'Inconsolata',
+      fontFamily: 'monospace',
     },
     'p.light': {
       color: LIGHT_GRAY,
@@ -124,7 +126,6 @@ function styles(cb) {
       ul: {
         listStyle: 'none',
         padding: 0,
-        li: {margin: '0 0 0 1rem'},
       },
       h1: {
         fontSize: SCALE[4],
@@ -147,21 +148,20 @@ function styles(cb) {
       }
     },
     'a#home': {
-      display: 'none',
+      display: 'block',
+      border: 'none',
+      color: LIGHTER_GRAY,
+      fontSize: '1.5rem',
+      marginRight: '.4em',
+      ':hover': {
+        color: LIGHT_GRAY,
+      },
     },
     '@media screen and (min-width: 64em)': {
       'a#home': {
-        display: 'block',
         position: 'fixed',
-        left: '1rem',
-        top: '1.2rem',
-        border: 'none',
-        color: LIGHTER_GRAY,
-        fontSize: '1.5rem',
-        marginRight: '.4em',
-        ':hover': {
-          color: LIGHT_GRAY,
-        },
+        left: '1.2rem',
+        top: '2.2rem',
       },
     },
   })

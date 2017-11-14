@@ -6,7 +6,7 @@ const manifest = new Manifest();
 const BUILD_DIR = '.build_files';
 const OUTPUT_DIR = 'output';
 
-const copy = manifest.cli_template('cp', [
+const copy = manifest.cli_template('/bin/cp', [
   {variables: ['input_files', 'output_file']},
 ]);
 
