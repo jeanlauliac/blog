@@ -47,8 +47,10 @@ function buildHTML(dirPath, contentPath, manifest, cb) {
       for (let j = 0; j < nodes.length; ++j) {
         const node = nodes[j];
         if (typeof node.nodeValue !== 'string') continue;
-      // last.nodeValue = last.nodeValue.replace(/[ \n]+([^ \n]+)$/, '\u00A0$1');
-        node.nodeValue = node.nodeValue.replace(/[ \n]+([a-zA-Z0-9-]{1,8}[.:,;])/g, '\u00A0$1');
+        node.nodeValue = node.nodeValue.replace(
+          /[ \n]+([a-zA-Z0-9-]{1,8}[.:,;])/g,
+          '\u00A0$1'
+        );
       }
     }
     const html = DOCTYPE + React.renderToStaticMarkup(
