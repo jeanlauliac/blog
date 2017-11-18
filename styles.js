@@ -123,9 +123,6 @@ function styles(cb) {
         color: ANCHOR_VISITED_COLOR,
       },
     },
-    '::selection': {
-      backgroundColor: 'rgb(230, 225, 215)',
-    },
     'ul.articles': {
       listStyle: 'none',
       padding: 0,

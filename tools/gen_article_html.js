@@ -10,6 +10,7 @@ const fs = require('fs');
 const marked = require('marked');
 const path = require('path');
 const pygmentize = require('pygmentize-bundled');
+const {JSDOM} = require('jsdom');
 
 const DOCTYPE = '<!DOCTYPE html>\n'
 
@@ -37,9 +38,22 @@ function buildHTML(dirPath, contentPath, manifest, cb) {
       cb(error)
       return
     }
+    const dom = JSDOM.fragment(`<div>${htmlContent}</div>`);
+    const elems = dom.firstChild.children;
+    for (let i = 0; i < elems.length; ++i) {
+      const elem = elems[i];
+      if (elem.tagName !== 'P') continue;
+      const nodes = elem.childNodes;
+      for (let j = 0; j < nodes.length; ++j) {
+        const node = nodes[j];
+        if (typeof node.nodeValue !== 'string') continue;
+      // last.nodeValue = last.nodeValue.replace(/[ \n]+([^ \n]+)$/, '\u00A0$1');
+        node.nodeValue = node.nodeValue.replace(/[ \n]+([a-zA-Z0-9-]{1,8}[.:,;])/g, '\u00A0$1');
+      }
+    }
     const html = DOCTYPE + React.renderToStaticMarkup(
       <ArticlePage
-        htmlContent={htmlContent}
+        htmlContent={dom.firstChild.innerHTML}
         article={manifest}
       />
     );
