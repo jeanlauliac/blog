@@ -153,7 +153,7 @@ to output content to `stderr`, and we'll be able to use `read` to collect it.
 One option is to push content into a string steam of our own:
 
 ```cpp
-function read_output_as_string(int master_fd) {
+std::string read_output_as_string(int master_fd) {
   std::ostringstream result;
   result.exceptions(std::ostringstream::badbit | std::ostringstream::failbit);
   ssize_t count;
@@ -187,8 +187,9 @@ cleanly. For pseudo-terminals, however, Linux will instead trigger en `EIO`
 error when the 'slave' side is closed, that needs to be handled specifically.
 On MacOS, `read` will return a count of zero just like for pipes.
 
-That's pretty much all there is to use pseudo-terminal for this simple purpose.
-Pseudo-terminal actually support a bunch of additional features like job control
-communication, that are used to implement full fledged software terminals like
-`xterm`, `iTerm`, etc. A great article on the topic is
-[*Using pseudo-terminals to control interactive programs*](http://rachid.koucha.free.fr/tech_corner/pty_pdip.html).
+That's pretty much all there is to using pseudo-terminals for this simple
+purpose. Pseudo-terminals actually support a bunch of additional features like
+job control communication, that are used to implement full fledged software
+terminals like `xterm`, `iTerm`, etc. A great article on the topic is [*Using
+pseudo-terminals to control interactive
+programs*](http://rachid.koucha.free.fr/tech_corner/pty_pdip.html).
