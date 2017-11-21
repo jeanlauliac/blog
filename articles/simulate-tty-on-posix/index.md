@@ -160,15 +160,16 @@ std::string read_output_as_string(int master_fd) {
   do {
     char buffer[1 << 12];
     count = read(master_fd, buffer, sizeof(buffer));
-    if (count < 0) {
-      if (errno == EIO) {
-        // On Linux, EIO is returned when the last
-        // slave of a pseudo-terminal is closed.
-        return result.str();
-      }
-      throw std::runtime_error("read() failed: " + std::to_string(errno));
+    if (count >= 0) {
+      result.write(buffer, count);
+      continue;
     }
-    result.write(buffer, count);
+    if (errno == EIO) {
+      // On Linux, EIO is returned when the last
+      // slave of a pseudo-terminal is closed.
+      return result.str();
+    }
+    throw std::runtime_error("read() failed: " + std::to_string(errno));
   } while (count > 0);
   return result.str();
 }
