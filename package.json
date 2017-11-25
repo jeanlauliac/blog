@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/jeanlauliac/blog",
   "dependencies": {
-    "@jeanlauliac/upd": "0.6.0-beta",
+    "@jeanlauliac/upd": "0.6.0",
     "@jeanlauliac/upd-configure": "^0.1.0",
     "absurd": "^0.3.33",
     "babel-cli": "^6.26.0",

@@ -6,9 +6,9 @@
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@jeanlauliac/upd-configure/-/upd-configure-0.1.0.tgz#710d6ed52ccb997c84225e8432073b34fdfaad9e"
 
-"@jeanlauliac/upd@0.6.0-beta":
-  version "0.6.0-beta"
-  resolved "https://registry.yarnpkg.com/@jeanlauliac/upd/-/upd-0.6.0-beta.tgz#ac9278431ff1627870a7390534d65204204bd55b"
+"@jeanlauliac/upd@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@jeanlauliac/upd/-/upd-0.6.0.tgz#caf1559e403652b909c672e796674b8e3e2d287d"
   dependencies:
     babel-cli "^6.26.0"
     babel-plugin-transform-flow-strip-types "^6.22.0"
