@@ -107,7 +107,7 @@ We can then conveniently compose the function to build our initial
 `usingWriteStream` version:
 
     var usingWriteStream = (name, handler) =>
-      usingStream(fs.createWriteStream.bind(null, name), name)
+      usingStream(fs.createWriteStream.bind(null, name), handler)
 
 Thanks to closures, we can build a RAII-like pattern in Javascript, ensuring
 our resources won’t leak. This is useful in a number of cases, even when the
