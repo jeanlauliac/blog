@@ -1,4 +1,4 @@
-Sources for [jeanlauliac.com](http://jeanlauliac.com):
+~~Sources for [jeanlauliac.com](http://jeanlauliac.com):~~ Old version, not maintained anymore.
 
 * `npm run build` to build everything into `output`;
 * `npm run serve` to build and serve on `localhost:3000`;
